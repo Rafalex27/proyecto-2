@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eliminar Objeto</title>
+    <style>
+        /* Fondo de la página */
+        body {
+            background-color: #6a0dad; /* Color morado */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Estilo de la tarjeta centrada */
+        .card {
+            background-color: #ffeb3b; /* Amarillo */
+            width: 45%; /* La tarjeta ocupa el 45% de la pantalla */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+
+        /* Estilos del formulario */
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            padding: 20px;
+        }
+
+        /* Botón de eliminación */
+        input[type="submit"] {
+            background-color: #d32f2f; /* Rojo para indicar eliminación */
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #b71c1c; /* Color rojo más oscuro en hover */
+        }
+
+        /* Mensaje de advertencia */
+        .warning {
+            color: #333;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h2>¿Estás seguro de que deseas eliminar este objeto?</h2>
+        <p class="warning">Esta acción no se puede deshacer.</p>
+        <form action="" method="post">
+            {% csrf_token %}
+            <input type="submit" value="Eliminar">
+        </form>
+    </div>
+</body>
+</html>

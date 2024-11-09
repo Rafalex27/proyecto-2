@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear Objeto</title>
+    <style>
+        /* Fondo de la página */
+        body {
+            background: linear-gradient(135deg, #4fc3f7, #f44336); /* Degradado azul claro a rojo */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Fondo con el logo del Barcelona */
+        body::before {
+            content: "";
+            position: absolute;
+            background-image: url('URL_DEL_LOGO_DEL_BARCELONA'); /* Reemplaza con la URL del logo */
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: 40%; /* Tamaño del logo */
+            opacity: 0.1; /* Transparencia para no opacar el contenido */
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            z-index: 0;
+        }
+
+        /* Estilo de la tarjeta */
+        .card {
+            background-color: #f5f5dc; /* Color crema */
+            width: 60%; /* La tarjeta ocupa el 60% de la pantalla */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Estilos del formulario */
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        /* Estilos para los campos del formulario */
+        input[type="text"],
+        input[type="file"],
+        input[type="number"],
+        textarea {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+            width: 100%;
+            box-sizing: border-box;
+            background-color: #fafaf5; /* Suave color crema */
+        }
+
+        /* Botón de envío */
+        input[type="submit"] {
+            background-color: #a0522d; /* Marrón claro */
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #8b4513; /* Marrón oscuro en hover */
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h2>Crear Nuevo Objeto</h2>
+        <form action="" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" value="Crear">
+        </form>
+    </div>
+</body>
+</html>

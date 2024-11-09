@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Navbar</title>
+    <style>
+        /* Reset básico */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Estilos de la barra de navegación */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #1a73e8; /* Color azul */
+            color: #ffffff;
+            padding: 1rem 2rem;
+            position: relative;
+        }
+
+        /* Logo de la barra de navegación */
+        .navbar-logo {
+            color: #ffffff;
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        /* Menú desplegable */
+        .navbar-menu {
+            display: flex;
+            gap: 1rem;
+        }
+
+        /* Enlaces del menú */
+        .navbar-menu a {
+            color: #1a73e8; /* Azul */
+            background-color: #ffffff;
+            text-decoration: none;
+            font-size: 1rem;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            border: 2px solid rgb(255, 0, 0); /* Borde RGB */
+            transition: background-color 0.3s ease, border-color 0.3s ease;
+        }
+
+        /* Efecto hover en los enlaces */
+        .navbar-menu a:hover {
+            background-color: #ffffff;
+            color: #1a73e8;
+            border-color: rgb(0, 255, 255); /* Cambio de borde RGB */
+        }
+
+        /* Contenedor del saludo */
+        .greeting {
+            color: #ffffff;
+            font-size: 1.2rem;
+            font-weight: 500;
+            text-align: center;
+        }
+
+        /* Media query para pantallas pequeñas */
+        @media (max-width: 600px) {
+            .navbar {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .navbar-menu {
+                flex-direction: column;
+                gap: 0.5rem;
+                width: 100%;
+                margin-top: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <a href="#" class="navbar-logo">MyApp</a>
+        
+        <!-- Contenedor del saludo dinámico -->
+        <div class="greeting" id="greeting">¡Bienvenidos!</div>
+
+        <!-- Menú desplegable -->
+        <div class="navbar-menu">
+            <a href="{% url 'post' %}">Home</a>
+            <a href="{% url 'create' %}">Create</a>
+            <a href="#logout">Logout</a>
+            <form method="post" action="{% url 'logout' %}">
+                {% csrf_token %}
+                <input type="submit" value="Logout">
+            </form>
+
+        </div>
+    </nav>
+
+    <script>
+        // Función para mostrar un saludo basado en la hora actual
+        function updateGreeting() {
+            const greetingElement = document.getElementById('greeting');
+            const currentHour = new Date().getHours();
+            
+            if (currentHour >= 6 && currentHour < 12) {
+                greetingElement.textContent = 'Buenos días';
+            } else if (currentHour >= 12 && currentHour < 18) {
+                greetingElement.textContent = 'Buenas tardes';
+            } else {
+                greetingElement.textContent = 'Buenas noches';
+            }
+        }
+
+        // Actualizar saludo al cargar la página
+        window.onload = updateGreeting;
+    </script>
+</body>
+</html>

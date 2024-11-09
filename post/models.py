@@ -5,8 +5,10 @@ from django.db import models
 class Post(models.Model):
     titulo = models.CharField(max_length=40)
     descripcion = models.TextField()
+    imagen=models.ImageField(upload_to="photos", blank=True)
+    precio=models.FloatField(default=True)
     author = models.ForeignKey("auth.User",
-        on_delete= models.CASCADE),
+        on_delete= models.CASCADE,default=True)
 
 
     class Meta: 
@@ -17,10 +19,9 @@ class Post(models.Model):
     
 class Personas(models.Model):
 
-    imagen=models.ImageField(upload_to="photos")
+    imagen=models.ImageField(upload_to="photos", blank=True)
     nombre=models.CharField(max_length=50)
     descripcion=models.CharField(max_length=200)
-
     class Meta:
         verbose_name_plural= "perosnal"
         

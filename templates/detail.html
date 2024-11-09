@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalle de Producto</title>
+    <style>
+        /* Estilos globales */
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #ff4b4b; /* Fondo rojo */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        /* Contenedor de la tarjeta */
+        .product-card {
+            background-color: rgba(173, 216, 230, 0.9); /* Azul cristalina */
+            border-radius: 15px;
+            box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.1);
+            padding: 25px;
+            max-width: 400px;
+            width: 100%;
+            text-align: center;
+            color: #003366; /* Azul oscuro */
+        }
+
+        /* Título del producto */
+        .product-card h1 {
+            font-size: 26px;
+            margin-bottom: 15px;
+        }
+
+        /* Imagen del producto */
+        .product-card img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        /* Precio del producto */
+        .product-card .price {
+            font-size: 24px;
+            font-weight: bold;
+            color: #003366; /* Azul oscuro */
+            margin-bottom: 15px;
+        }
+
+        /* Descripción del producto */
+        .product-card .description {
+            font-size: 16px;
+            color: #333;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        /* Estilo común para los botones dorados */
+        .product-card .button {
+            display: inline-block;
+            width: 45%;
+            padding: 10px;
+            background-color: #d4af37; /* Color dorado */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            text-align: center;
+            margin: 5px;
+        }
+
+        .product-card .button:hover {
+            background-color: #b8902f; /* Color dorado más oscuro */
+        }
+
+        /* Responsividad */
+        @media (max-width: 600px) {
+            .product-card {
+                padding: 20px;
+            }
+
+            .product-card h1 {
+                font-size: 22px;
+            }
+
+            .product-card .price {
+                font-size: 20px;
+            }
+
+            .product-card .button {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="product-card">
+        <h1>Producto</h1>
+        {% if post.imagen %}
+        <img src="{{post.imagen.url}}" alt="{{post.imagen.url}}">
+        {% endif %}
+        <p class="price">${{post.Precio}}</p>
+        <p class="description">
+            Este es un producto increíble diseñado para satisfacer todas tus necesidades. Con un diseño elegante y funciones innovadoras, este producto hará que tus días sean más productivos.
+        </p>
+        <div class="buttons">
+            <button class="button">Comprar Ahora</button>
+            <button class="button">Agregar al Carrito</button>
+        </div>
+        <a href="{% url 'update' post.pk %}">Actualizar</a>
+        <a href="{% url 'delete' post.pk %}">Eliminar</a>
+    </div>
+    
+
+</body>
+</html>

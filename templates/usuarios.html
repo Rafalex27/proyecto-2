@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Mi Primera Tabla</title>
+  <!-- <style>
+    table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+
+    th, td {
+      border: 1px solid black;
+      padding: 8px;
+      text-align: left;
+    }
+
+    tr:nth-child(even) {
+      background-color: #f2f2f2;
+    }
+  </style> -->
+</head>
+<body>
+
+<h2>Mi Tabla</h2>
+
+
+    
+    {% for usuarios in personas_list %}
+            <td><img scr="{{ usuarios.imagen.url }}"></td>
+            <td>{{ usuarios.nombre }}</td>
+            <td>{{ usuarios.decripcion }}</td>
+    {% endfor %}
+    
+      
+
+</body>
+</html>

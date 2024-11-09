@@ -1,3 +1,6 @@
+{% include 'navbar.html' %}
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,7 +10,9 @@
 </head>
 <body>
     
-    <h2>Post</h2>
-    
+    <a href="{% url 'post' %}">Publicaciones</a>
+    <a href="{% url 'usuarios' %}">Usuarios</a>
 </body>
 </html>
+
+if settings.DEBUG 
